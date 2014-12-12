@@ -1,0 +1,49 @@
+
+@-webkit-keyframes hideMap {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+@-webkit-keyframes showMap {
+  0% {
+	 height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+html, body, #mapCanvas  {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  top: 0px;
+  width: 100%;
+}
+
+#mapCanvas {
+  width: 100%;
+  top:500px;
+}
+
+#mapCanvas.hide {
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: hideMap;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-direction: alternate;
+}
+
+#mapCanvas.show {
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: showMap;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-direction: alternate;
+}
+

@@ -1,0 +1,81 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Mélody Galmiche" />
+    <meta http-equiv="Content-Language" content="fr-FR" />
+    <meta name="robots" content="index, follow" />
+
+ 
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css" />
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery.js" language="javascript"></script> 
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="js/main.js" language="javascript"></script>
+	<script src="js/map.js" language="javascript"></script>
+
+    <title>Findway</title>
+
+</head>
+
+<body>
+<div id="header" class="fullWidthWrapper">
+	<div>
+    	<img class="logoClient" src="img/FindWayLogo.png" alt="FindWay" /></a>
+        <a href="index.html"><img class="logoEntreprise" src="img/PathfinderLogo.png" alt="FindWay" /></a>
+    </div>
+</div>
+
+
+<div id="main" class="home"> 
+    <div class="row">
+        <div class="column dark" id="lieu">
+            <div href="javascript:void(0);" class="panel rubBlock flipBlock">
+                <div id="titleLieu">
+                    <h1>Chercher un lieu</h1>
+                    <img src="img/lieu.png" id="lieuImg">
+                </div>
+                <div class="back">
+                    <div class="block">
+                        <label for="start">
+                            <input placeholder="Ville" width="100%" id="address" type="text"/>
+                        </label>
+                        <div class="search">
+                            <input type="button" class="validate" id="RechercherLieu" value="Rechercher" onclick="codeAddress()" />
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+    	<div class="column dark" id="itineraire">
+        	<div href="javascript:void(0);" class="panel rubBlock flipBlock">
+                <div id="titleItineraire">
+                    <h1>Indiquer un itinéraire</h1>
+                    <img src="img/itineraire.png" id="itineraireImg">
+                </div>
+                <div class="back">
+					<div class="block" id="itineraire">
+                        <label for="start">
+                            <input placeholder="Départ" width="100%" id="start" type="text"/>
+                        </label>
+                        <label for="end">
+                            <input placeholder="Arrivée" width="100%" id="end" type="text" />
+                        </label>
+                        <div class="search">
+                            <input type="button" class="validate" id="RechercherItineraire" value="Rechercher" onclick="calcRoute()" />
+                        </div>
+                	</div>
+                </div>
+            </div>     
+        </div>
+    </div>	
+</div>
+
+<div id="mapCanvas"></div>
+</body>
+</html>
