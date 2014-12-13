@@ -9,7 +9,7 @@
     margin-right: auto;
     width: 50%;
     min-width: 990px;
-    height: 10%;
+    height: 8%;
     min-height: 100px;
 }
     /** LOGO BLOCK**/
@@ -30,11 +30,31 @@
             width: 180px;
         }
         #logoFirm {
-            padding-top: 10%;
+            padding-top: 5%;
         }
         #logoProject {
-            padding-top: 15%;
+            padding-top: 10%;
         }
 
 
-
+/** Menu raccourcis
+ *
+    <!-- Ribbon Menu -->
+    <div id="ribbonMenu">
+        <!-- home ribbon menu -->
+        <div id="homeRibbonMenu">
+            <a href="#">
+                <img id="logoHomeRibbonMenu" src="img/logoHome.png" alt="Accueil" />
+            </a>
+        </div>
+        <!-- place ribbon menu -->
+        <div id="placeRibbonMenu">
+            <img id="logoPlaceRibbonMenu" src="img/lieu.png" alt="Lieu" />
+        </div>
+        <!-- route ribbon menu -->
+        <div id="routeRibbonMenu">
+            <img id="logoRouteRibbonMenu" src="img/itineraire.png" alt="Itinéraire" />
+        </div>
+    </div>
+ *
+**/

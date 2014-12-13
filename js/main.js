@@ -95,5 +95,29 @@ $(document).ready(function ($) {
 		$('#mapCanvas').css('display', 'none'),
         $('#main').css('display', 'initial');
 	});
+    
+    var resize = function() {
+        var main = $('#main');
+        var mapCanvas = $('#mapCanvas');
+        var block = $('.block');
+        
+        var hheight = $("html").height();
+        var hmax = Math.max(hheight*8/100, 100);
+        
+        main.height(Math.max(hheight-hmax, parseInt(main.css('min-height'))));
+        
+        mapCanvas.height(Math.max(hheight-hmax, parseInt(mapCanvas.css('min-height'))));
+        mapCanvas.css( "top", hmax+"px" );
+        
+        var margin_top = (main.height() - 410) / 2;
+        block.css('margin-top', margin_top+"px");
+        block.css('margin-bottom', margin_top+"px");
+    };
+    
+    resize();
+    $( window ).resize( resize );
 
 });
+
+
+

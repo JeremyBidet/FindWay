@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 /*** MAIN ***/
 /***********/
 #main {
+    z-index: 100000;
     display: block;
     position: relative;
     background-color: #132033;
@@ -39,9 +40,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: auto; /* header div */
     width: 100%;
     min-width: 990px; /* minimum width of header ribbon */
-    height: calc(100% - 10%);
-    min-height: 410px; /* height of button "place" and "route" */
-    z-index: 100000;
+    min-height: 420px; /* height of button "place" and "route" */
 }
 
     /** MAIN MENU **/
@@ -53,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
         width: 50%;
         min-width: 990px; /* minimum width of header ribbon */
         height: 100%;
-        min-height: 410px; /* height of button "place" and "route" */
+        min-height: inherit; /* height of button "place" and "route" */
     }
     #mainMenu.show {
         -webkit-animation-iteration-count: 1;
@@ -82,10 +81,6 @@ h1, h2, h3, h4, h5, h6 {
             width: 410px;
             text-align: center;
             background-color: rgba(35, 204, 206, 1.0);
-            margin-top: calc(50% - ((410px / 2) + (410px / 4)));
-            /*margin-top: calc(50% - 410px);*/
-            margin-bottom: calc(50% - ((410px / 2) + (410px / 4)));
-            /*margin-bottom: calc(50% - 410px);*/
         }
         #place.block {
             float: left;
@@ -209,33 +204,25 @@ h1, h2, h3, h4, h5, h6 {
                     label {
                         position: relative;
                         float: left;
-                        width: 320px;
+                        width: 310px;
                     }
                     label input {
                         position: relative;
                         float: left;
                         width: inherit;
-                        padding: 10px 2px;
+                        padding: 10px 10px;
                         margin-bottom: 15px;
                         font-weight: normal;
                         font-size: 16px;
-                        border: 1px solid #132033;
+                        border: 1px solid rgb(19, 32, 51);
                         border-radius: 2px;
                     }
                     label input:focus {
                         background-color: #d8f3ff;
                         -webkit-transition: all .25s linear;
                         transition: all .25s linear;
-                    }
-                    label input#start {
-                        position: relative;
-                        border: 1px solid #132033;
-                        border-radius: 2px;
-                    }
-                    label input#end {
-                        position: relative;
-                        border: 1px solid #132033;
-                        border-radius: 2px;
+                        border: 1px solid rgb(19, 32, 51);
+                        outline: none;
                     }
                     /** SEARCH **/
                     input.validate {
@@ -246,6 +233,7 @@ h1, h2, h3, h4, h5, h6 {
                         float: right;
                         width: 150px;
                         text-align: center;
+                        vertical-align: middle;
                         line-height: 37px;
                         height: 37px;
                         margin-right: 2px;
@@ -264,6 +252,8 @@ h1, h2, h3, h4, h5, h6 {
                         transition: all .15s linear;
                         border: 1px solid #132033;
                         cursor: pointer;
+                        text-align: center;
+                        vertical-align: middle;
                     }
 
                     
