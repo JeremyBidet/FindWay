@@ -1,0 +1,40 @@
+/**************/
+/*** HEADER ***/
+/*************/
+#header {
+    z-index: 100000;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-width: 990px;
+    height: 10%;
+    min-height: 100px;
+}
+    /** LOGO BLOCK**/
+    #project, #firm {
+        z-index: inherit;
+        position: relative;
+        width: 180px;
+        height: 100%;
+    }
+    #project {
+        float: left;
+    }
+    #firm {
+        float: right;
+    }
+        /** LOGO IMG **/
+        #logoFirm, #logoProject {
+            width: 180px;
+        }
+        #logoFirm {
+            padding-top: 10%;
+        }
+        #logoProject {
+            padding-top: 15%;
+        }
+
+
+

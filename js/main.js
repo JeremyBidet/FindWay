@@ -3,100 +3,97 @@ $(document).ready(function ($) {
 	
 	/*$('input[type="text"]').toggleInput();*/
 
-	$('#lieu .flipBlock').click(function(e){
-		if($('#itineraire .flipBlock').hasClass('flip')){
-			$('#itineraire .flipBlock').removeClass('flip');
-			$('#titleItineraire').removeClass('move');
-			$('#titleItineraire').addClass('moveDown');
+    /**
+     * click on place panel
+     * close route panel form and open place panel form
+     */
+	$('#place .panel').click(function(e) {
+        if($('#route .panel').hasClass('flip')) {
+			$('#route .panel').removeClass('flip');
+			$('#titleRoute').removeClass('move');
+			$('#titleRoute').addClass('moveDown');
 		}	
-		$('#lieu .flipBlock').addClass('flip');
-		$('#titleLieu').removeClass('moveDown');
-		$("#titleLieu").addClass('move');
+		$('#place .panel').addClass('flip');
+		$('#titlePlace').removeClass('moveDown');
+		$("#titlePlace").addClass('move');
+        $('#address').focus();
 		e.preventDefault();
 	});
-	$('#itineraire .flipBlock').click(function(e){
-		if($('#lieu .flipBlock').hasClass('flip')){
-			$('#lieu .flipBlock').removeClass('flip');
-			$('#titleLieu').removeClass('move');
-			$('#titleLieu').addClass('moveDown');
+    
+    /**
+     * click on route panel
+     * close place panel form and open route panel form
+     */
+    var ended = false;
+	$('#route .panel').click(function(e) {
+		if($('#place .panel').hasClass('flip')) {
+			$('#place .panel').removeClass('flip');
+			$('#titlePlace').removeClass('move');
+			$('#titlePlace').addClass('moveDown');
 		}	
-		$('#itineraire .flipBlock').addClass('flip');
-		$('#titleItineraire').removeClass('moveDown');
-		$("#titleItineraire").addClass('move');
+		$('#route .panel').addClass('flip');
+		$('#titleRoute').removeClass('moveDown');
+		$("#titleRoute").addClass('move');
+        if( ! ended ) {
+            $('#start').focus();
+        } else {
+            $('#end').focus();
+            ended = false;
+        }
 		e.preventDefault();
 	});
+    $('#end').click(function(e) {
+        ended = true;
+        e.preventDefault();
+    });
 	
-	$('#espace-client .flipBlock').click(function(e){
-		$('#espace-client .flipBlock').addClass('flip');
-		e.preventDefault();
+    /**
+     * submit with search button on place panel
+     * hide all panel form and show google map
+     */
+	$('#place .panel .validate').click(function(e) {
+		$('.panel').removeClass('flip');
+		$('#titlePlace').removeClass('move');
+		$('#mapCanvas').css('display', 'initial'),
+        $('#main').css('display', 'none');
+        e.preventDefault();
 	});
-	
-	$('#lieu .flipBlock .validate').click(function(e){
-		$('.flipBlock').removeClass('flip');
-		$('#titleLieu').removeClass('move');
-		/*$(".row").removeClass('show');*/
-		/*$(".row").addClass('hide');
-		if($("#mapCanvas").hasClass('hide')){
-			$("#mapCanvas").removeClass('hide');
-		}*/
-		$("#mapCanvas").addClass('show');
-		e.preventDefault();
-	});
-	$('#itineraire .flipBlock .validate').click(function(e){
-		$('.flipBlock').removeClass('flip');
-		$('#titleItineraire').removeClass('move');
-		/*$(".row").removeClass('show');
-		$(".row").addClass('hide');
-		if($("#mapCanvas").hasClass('hide')){
-			$("#mapCanvas").removeClass('hide');
-		}*/
-		$("#mapCanvas").addClass('show');
+    
+    /**
+     * submit with search button on place panel
+     * hide all panel form and show google map
+     */
+	$('#route .panel .validate').click(function(e) {
+		$('.panel').removeClass('flip');
+		$('#titleRoute').removeClass('move');
+		$('#mapCanvas').css('display', 'initial'),
+        $('#main').css('display', 'none');
 		e.preventDefault();
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 	});
 
 
-	$('#logoClient').click(function() {
-		$('.flipBlock').removeClass('flip');
-		$(".row").removeClass('hide');
-		$(".row").addClass('show');
+    /**
+     * click on project logo
+     * hide google map, show panel without form
+     */
+	$('#logoProject').click(function() {
+		$('.panel').removeClass('flip');
+		$(".mainMenu").removeClass('hide');
+		$(".mainMenu").addClass('show');
 		setTimeout(function() {
-			if($('#titleItineraire').hasClass('move')){
-				$('#titleItineraire').removeClass('move');
-				$('#titleItineraire').addClass('moveDown');
+			if($('#titleRoute').hasClass('move')) {
+				$('#titleRoute').removeClass('move');
+				$('#titleRoute').addClass('moveDown');
 			}
-			if($('#titleLieu').hasClass('move')){
-				$('#titleLieu').removeClass('move');
-				$('#titleLieu').addClass('moveDown');
+			if($('#titlePlace').hasClass('move')) {
+				$('#titlePlace').removeClass('move');
+				$('#titlePlace').addClass('moveDown');
 			}
 		}, 400);
-		if($("#mapCanvas").hasClass('show')){
-			$("#mapCanvas").removeClass('show');
-		}
-		$("#mapCanvas").addClass('hide');
-	});
-
-	$('html').click(function() {
-		$('.flipBlock').removeClass('flip');
-		setTimeout(function() {
-			if($('#titleItineraire').hasClass('move')){
-				$('#titleItineraire').removeClass('move');
-				$('#titleItineraire').addClass('moveDown');
-			}
-			if($('#titleLieu').hasClass('move')){
-				$('#titleLieu').removeClass('move');
-				$('#titleLieu').addClass('moveDown');
-			}
-		}, 400);
-		if($("#mapCanvas").hasClass('show')){
-			$("#mapCanvas").removeClass('show');
-		}
-		$("#mapCanvas").addClass('hide');
-	});
-	
-	$('#main').click(function(event){
-		event.stopPropagation();
+		$('#mapCanvas').css('display', 'none'),
+        $('#main').css('display', 'initial');
 	});
 
 });

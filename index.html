@@ -1,81 +1,103 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]>           <html class="no-js lt-ie9 lt-ie8 lt-ie7">   <![endif]-->
+<!--[if IE 7]>              <html class="no-js lt-ie9 lt-ie8">            <![endif]-->
+<!--[if IE 8]>              <html class="no-js lt-ie9">                     <![endif]-->
+<!--[if gt IE 8]><!-->  <html lang="fr" class="no-js">            <!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Mélody Galmiche" />
+    <meta name="author" content="Melody Galmiche" />
+    <meta name="author" content="Enzo Ramos" />
+    <meta name="author" content="Jeremy Bidet" />
     <meta http-equiv="Content-Language" content="fr-FR" />
     <meta name="robots" content="index, follow" />
 
- 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/map.css" />
+    <link rel="stylesheet" type="text/css" href="css/header.css" />
 
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery.js" language="javascript"></script> 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery.js" language="javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="js/main.js" language="javascript"></script>
-	<script src="js/map.js" language="javascript"></script>
+    <script src="js/map.js" language="javascript"></script>
 
-    <title>Findway</title>
-
+    <title>FindWay</title>
 </head>
 
 <body>
-<div id="header" class="fullWidthWrapper">
-	<div>
-    	<img class="logoClient" src="img/FindWayLogo.png" alt="FindWay" /></a>
-        <a href="index.html"><img class="logoEntreprise" src="img/PathfinderLogo.png" alt="FindWay" /></a>
+
+<!-- HEADER RUBAN -->
+<div id="header">
+    <!-- Project link/logo on left -->
+    <div id="project">
+        <a href="#">
+            <img id="logoProject" src="img/FindWayLogo.png" alt="FindWay" />
+        </a>
+    </div>
+    <!-- Firm link/logo on right -->
+    <div id="firm">
+        <a href="http://82.241.84.75:420/">
+            <img id="logoFirm" src="img/PathfinderLogo.png" alt="PathFinder" />
+        </a>
     </div>
 </div>
 
 
-<div id="main" class="home"> 
-    <div class="row">
-        <div class="column dark" id="lieu">
-            <div href="javascript:void(0);" class="panel rubBlock flipBlock">
-                <div id="titleLieu">
+<!-- MAIN -->
+<div id="main" class="home">
+    <!-- MENU -->
+    <div id="mainMenu">
+        <!-- PLACE BLOCK -->
+        <div id="place" class="block">
+            <!-- INNER BLOCK -->
+            <div class="panel" href="javascript:void(0);">
+                <!-- TITLE -->
+                <div id="titlePlace">
                     <h1>Chercher un lieu</h1>
-                    <img src="img/lieu.png" id="lieuImg">
+                    <img id="placeImg" src="img/lieu.png" />
                 </div>
-                <div class="back">
-                    <div class="block">
-                        <label for="start">
-                            <input placeholder="Ville" width="100%" id="address" type="text"/>
-                        </label>
-                        <div class="search">
-                            <input type="button" class="validate" id="RechercherLieu" value="Rechercher" onclick="codeAddress()" />
-                        </div>
-                    </div>
+                <!-- FORM -->
+                <div class="form">
+                    <!-- INPUT PLACE -->
+                    <label for="start">
+                        <input type="text" id="address" placeholder="Ville" width="100%" />
+                    </label>
+                    <!-- SUBMIT -->
+                    <input type="button" id="findPlace" class="validate" value="Rechercher" onclick="codeAddress()" />
                 </div>
-            </div>     
+            </div>
         </div>
-    	<div class="column dark" id="itineraire">
-        	<div href="javascript:void(0);" class="panel rubBlock flipBlock">
-                <div id="titleItineraire">
+        <!-- ROUTE BLOCK -->
+        <div id="route" class="block">
+            <!-- INNER BLOCK -->
+            <div class="panel" href="javascript:void(0);">
+                <!-- TITLE -->
+                <div id="titleRoute">
                     <h1>Indiquer un itinéraire</h1>
-                    <img src="img/itineraire.png" id="itineraireImg">
+                    <img id="routeImg" src="img/itineraire.png" />
                 </div>
-                <div class="back">
-					<div class="block" id="itineraire">
-                        <label for="start">
-                            <input placeholder="Départ" width="100%" id="start" type="text"/>
-                        </label>
-                        <label for="end">
-                            <input placeholder="Arrivée" width="100%" id="end" type="text" />
-                        </label>
-                        <div class="search">
-                            <input type="button" class="validate" id="RechercherItineraire" value="Rechercher" onclick="calcRoute()" />
-                        </div>
-                	</div>
+                <!-- FORM -->
+                <div class="form">
+                    <!-- INPUT ROUTE START -->
+                    <label for="start">
+                        <input type="text" id="start" placeholder="Départ" width="100%" />
+                    </label>
+                    <!-- INPUT ROUTE END -->
+                    <label for="end">
+                        <input type="text" id="end" placeholder="Arrivée" width="100%" />
+                    </label>
+                    <!-- SUBMIT -->
+                    <input type="button" id="findRoute" class="validate" value="Rechercher" onclick="calcRoute()" />
                 </div>
-            </div>     
-        </div>
-    </div>	
+            </div>
+        </div>        
+    </div>
 </div>
 
-<div id="mapCanvas"></div>
+<!-- MAP -->
+<div id="mapCanvas">
+</div>
+
 </body>
 </html>
