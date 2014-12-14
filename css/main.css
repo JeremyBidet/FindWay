@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;   /* center */
     margin-right: auto; /* header div */
     width: 100%;
-    min-width: 820px; /* minimum width of header ribbon */
+    min-width: 960px; /* minimum width of header ribbon */
     min-height: 420px; /* height of button "place" and "route" */
 }
 
@@ -49,8 +49,8 @@ h1, h2, h3, h4, h5, h6 {
         position: relative;
         clear: both;
         margin: auto;
-        width: 50%;
-        min-width: 820px; /* minimum width of header ribbon */
+        width: 60%;
+        min-width: inherit; /* minimum width of header ribbon */
         height: 100%;
         min-height: inherit; /* height of button "place" and "route" */
     }
