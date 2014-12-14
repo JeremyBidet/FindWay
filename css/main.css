@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;   /* center */
     margin-right: auto; /* header div */
     width: 100%;
-    min-width: 990px; /* minimum width of header ribbon */
+    min-width: 820px; /* minimum width of header ribbon */
     min-height: 420px; /* height of button "place" and "route" */
 }
 
@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
         clear: both;
         margin: auto;
         width: 50%;
-        min-width: 990px; /* minimum width of header ribbon */
+        min-width: 820px; /* minimum width of header ribbon */
         height: 100%;
         min-height: inherit; /* height of button "place" and "route" */
     }
@@ -200,16 +200,11 @@ h1, h2, h3, h4, h5, h6 {
                 .no-csstransforms3d .panel.flip .form {
                     display: block!important;
                 }
-                    /** INPUT LABEL **/
-                    label {
+                    /** INPUT **/
+                    input.field {
                         position: relative;
                         float: left;
                         width: 310px;
-                    }
-                    label input {
-                        position: relative;
-                        float: left;
-                        width: inherit;
                         padding: 10px 10px;
                         margin-bottom: 15px;
                         font-weight: normal;
@@ -217,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
                         border: 1px solid rgb(19, 32, 51);
                         border-radius: 2px;
                     }
-                    label input:focus {
+                    input.field:focus {
                         background-color: #d8f3ff;
                         -webkit-transition: all .25s linear;
                         transition: all .25s linear;

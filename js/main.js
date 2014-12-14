@@ -109,7 +109,7 @@ $(document).ready(function ($) {
         mapCanvas.height(Math.max(hheight-hmax, parseInt(mapCanvas.css('min-height'))));
         mapCanvas.css( "top", hmax+"px" );
         
-        var margin_top = (main.height() - 410) / 2;
+        var margin_top = (main.height() - block.width()) / 2;
         block.css('margin-top', margin_top+"px");
         block.css('margin-bottom', margin_top+"px");
     };
