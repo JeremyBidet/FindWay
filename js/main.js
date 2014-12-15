@@ -1,7 +1,48 @@
 // JavaScript Document
 $(document).ready(function ($) {
 	
-	/*$('input[type="text"]').toggleInput();*/
+    
+    /**
+     * click on menu ribbon button :
+     * home, place, route
+     */
+    function activeClass(node, className) {
+        if( node.hasClass(className) ) {
+            return;
+        } else {
+            node.addClass(className);
+        }
+    }
+    function deleteClass(node, className) {
+        if( node.hasClass(className) ) {
+            node.removeClass(className);
+        }
+    }
+    $('#homeRibbonMenu').click(function() {
+        deleteClass($('#placeRibbonMenu'), 'active');
+        deleteClass($('#placeLink'), 'active');
+        deleteClass($('#routeRibbonMenu'), 'active');
+        deleteClass($('#routeLink'), 'active');
+        activeClass($('#homeRibbonMenu'), 'active');
+        activeClass($('#homeLink'), 'active');
+    });
+    $('#placeRibbonMenu').click(function() {
+        deleteClass($('#homeRibbonMenu'), 'active');
+        deleteClass($('#homeLink'), 'active');
+        deleteClass($('#routeRibbonMenu'), 'active');
+        deleteClass($('#routeLink'), 'active');
+        activeClass($('#placeRibbonMenu'), 'active');
+        activeClass($('#placeLink'), 'active');
+    });
+    $('#routeRibbonMenu').click(function() {
+        deleteClass($('#placeRibbonMenu'), 'active');
+        deleteClass($('#placeLink'), 'active');
+        deleteClass($('#homeRibbonMenu'), 'active');
+        deleteClass($('#homeLink'), 'active');
+        activeClass($('#routeRibbonMenu'), 'active');
+        activeClass($('#routeLink'), 'active');
+    });
+    
 
     /**
      * click on place panel
@@ -95,6 +136,7 @@ $(document).ready(function ($) {
 		$('#mapCanvas').css('display', 'none'),
         $('#main').css('display', 'initial');
 	});
+
     
     var resize = function() {
         var main = $('#main');

@@ -4,13 +4,69 @@
 <!--[if IE 8]>              <html class="no-js lt-ie9">                     <![endif]-->
 <!--[if gt IE 8]><!-->  <html lang="fr" class="no-js">            <!--<![endif]-->
 <head>
-    <title>FindWay - Error</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="fr-FR" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="stylesheet" type="text/css" href="pop.css" />
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <title>Pop</title>
 </head>
 
 <body>
 
+    <!-- HEADER RUBAN -->
+    <div id="header">
+        <!-- Project link/logo on left -->
+        <div id="project">
+            <a href="index.html">
+                <img id="logoProject" src="img/FindWayLogo.png" alt="FindWay" />
+            </a>
+        </div>
+        
+        <!-- Ribbon Menu -->
+        <div id="ribbonMenu">
+            <table id="ribbonMenuTable">
+                <tr id="ribbonMenuTr">
+                    <!-- home ribbon menu -->
+                    <td id="homeRibbonMenu" >
+                        <img id="logoHomeRibbonMenu" src="img/home.png" alt="Accueil" />
+                    </td>
+                    <td class="none"></td>
+                    <!-- place ribbon menu -->
+                    <td id="placeRibbonMenu">
+                        <img id="logoPlaceRibbonMenu" src="img/place.min.png" alt="Lieu" />
+                    </td>
+                    <td class="none"></td>
+                    <!-- route ribbon menu -->
+                    <td id="routeRibbonMenu">
+                        <img id="logoRouteRibbonMenu" src="img/route.min.png" alt="Itinéraire" />
+                    </td>
+                </tr>
+                <tr id="underRibbonMenuTr">
+                    <td id="homeLink" class="link"></td>
+                    <td class="none"></td>
+                    <td id="placeLink" class="link"></td>
+                    <td class="none"></td>
+                    <td id="routeLink" class="link"></td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Firm link/logo on right -->
+        <div id="firm">
+            <a href="http://82.241.84.75:420/">
+                <img id="logoFirm" src="img/PathfinderLogo.png" alt="PathFinder" />
+            </a>
+        </div>
+    </div>
+
+    
 <script>
-    function myFunction() {
+/*
+    function parseHTTPArgs() {
         var tmp1 = s.substring(
             window.location.href.search("\\?") + 1,
             window.location.href.length;
@@ -30,9 +86,49 @@
         alert(tmp3[0].value);
         document.getElementById("demo").innerHTML = tmp3[0].value;
     }
+    */
+    /**
+     * click on menu ribbon button :
+     * home, place, route
+     */
+    function activeClass(node, className) {
+        if( node.hasClass(className) ) {
+            return;
+        } else {
+            node.addClass(className);
+        }
+    }
+    function deleteClass(node, className) {
+        if( node.hasClass(className) ) {
+            node.removeClass(className);
+        }
+    }
+    $('#homeRibbonMenu').click(function() {
+        deleteClass($('#placeRibbonMenu'), 'active');
+        deleteClass($('#placeLink'), 'active');
+        deleteClass($('#routeRibbonMenu'), 'active');
+        deleteClass($('#routeLink'), 'active');
+        activeClass($('#homeRibbonMenu'), 'active');
+        activeClass($('#homeLink'), 'active');
+    });
+    $('#placeRibbonMenu').click(function() {
+        deleteClass($('#homeRibbonMenu'), 'active');
+        deleteClass($('#homeLink'), 'active');
+        deleteClass($('#routeRibbonMenu'), 'active');
+        deleteClass($('#routeLink'), 'active');
+        activeClass($('#placeRibbonMenu'), 'active');
+        activeClass($('#placeLink'), 'active');
+    });
+    $('#routeRibbonMenu').click(function() {
+        deleteClass($('#placeRibbonMenu'), 'active');
+        deleteClass($('#placeLink'), 'active');
+        deleteClass($('#homeRibbonMenu'), 'active');
+        deleteClass($('#homeLink'), 'active');
+        activeClass($('#routeRibbonMenu'), 'active');
+        activeClass($('#routeLink'), 'active');
+    });
 </script>
-
-    <p id="demo"></p>
+    
     
 </body>
 </html>
