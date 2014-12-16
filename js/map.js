@@ -92,14 +92,10 @@ function codeAddress(place) {
 function calcRoute(_start, _end) {
     infowindow.close();
     marker.setVisible(false);
-    // First, remove any existing markers from the map.
     for (var i = 0; i < markerArray.length; i++) {
         markerArray[i].setMap(null);
     }
-    // Now, clear the array itself.
     markerArray = [];
-    // Retrieve the start and end locations and create
-    // a DirectionsRequest using WALKING directions.
     var start = document.getElementById(_start).value;
     var end = document.getElementById(_end).value;
     var request = {
@@ -107,8 +103,6 @@ function calcRoute(_start, _end) {
         destination: end,
         travelMode: google.maps.TravelMode.DRIVING
     };
-    // Route the directions and pass the response to a
-    // function to create markers for each step.
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
@@ -118,10 +112,6 @@ function calcRoute(_start, _end) {
 }
 
 function showSteps(directionResult) {
-    // For each step, place a marker, and add the text to the marker's
-    // info window. Also attach the marker to an array so we
-    // can keep track of it and remove it when calculating new
-    // routes.
     var myRoute = directionResult.routes[0].legs[0];
 
     for (var i = 0; i < myRoute.steps.length; i++) {
@@ -136,8 +126,6 @@ function showSteps(directionResult) {
 
 function attachInstructionText(marker, text) {
     google.maps.event.addListener(marker, 'click', function() {
-        // Open an info window when the marker is clicked on,
-        // containing the text of the step.
         stepDisplay.setContent(text);
         stepDisplay.open(map, marker);
     });
