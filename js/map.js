@@ -105,7 +105,7 @@ function calcRoute(_start, _end) {
     var request = {
         origin: start,
         destination: end,
-        travelMode: google.maps.TravelMode.WALKING
+        travelMode: google.maps.TravelMode.DRIVING
     };
     // Route the directions and pass the response to a
     // function to create markers for each step.
