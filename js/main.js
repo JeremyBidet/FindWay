@@ -125,9 +125,9 @@ $(document).ready(function ($) {
         
         activeClass($('#placeRibbonMenu'), 'active');
         activeClass($('#placeLink'), 'active');
+        $('#ribbonPlace').css('display', 'inline');
         activeClass($('#ribbonForm'), 'active');
         
-        $('#ribbonPlace').css('display', 'inline');
         $('#ribbonFindPlace').css('display', 'inline');
         
         $('#ribbonStart').css('display', 'none');
@@ -136,7 +136,7 @@ $(document).ready(function ($) {
         
         $('#ribbonPlace').focus();
         
-        resize();
+        resizeWindow();
     });
     
     $('#routeRibbonMenu').click(function() {
@@ -146,9 +146,9 @@ $(document).ready(function ($) {
         
         activeClass($('#routeRibbonMenu'), 'active');
         activeClass($('#routeLink'), 'active');
+        $('#ribbonPlace').css('display', 'none');
         activeClass($('#ribbonForm'), 'active');
         
-        $('#ribbonPlace').css('display', 'none');
         $('#ribbonFindPlace').css('display', 'none');
         
         $('#ribbonStart').css('display', 'inline');
@@ -157,7 +157,7 @@ $(document).ready(function ($) {
         
         $('#ribbonStart').focus();
         
-        resize();
+        resizeWindow();
     });
     
     $('#address').keypress( function (e) {
@@ -173,6 +173,7 @@ $(document).ready(function ($) {
             }
         }
     });
+    
     $('#ribbonPlace').keypress( function (e) {
         if( e.which == 13 ) {
             if( $('#ribbonPlace').val().trim() ) {
@@ -221,20 +222,21 @@ $(document).ready(function ($) {
     
     
     
-    var resize = function() {
+    function resizeWindow() {
         var main = $('#main');
         var mapCanvas = $('#mapCanvas');
         var block = $('.block');
+        var ribbonForm = $('#ribbonForm');
         
         var hheight = $("html").height();
         var hmax = Math.max(hheight*8/100, 100);
         
         main.height(Math.max(hheight-hmax, parseInt(main.css('min-height'))));
         
-        mapCanvas.height(Math.max(hheight-hmax, parseInt(mapCanvas.css('min-height'))));
-        if( $('#ribbonForm').hasClass('active') ) {
-            hmax += 55;
+        if( ribbonForm.hasClass('active') ) {
+            hmax += ribbonForm.height();
         }
+        mapCanvas.height(Math.max(hheight-hmax, parseInt(mapCanvas.css('min-height'))));
         mapCanvas.css( "top", hmax+"px" );
         
         var margin_top = (main.height() - block.width()) / 2;
@@ -242,8 +244,8 @@ $(document).ready(function ($) {
         block.css('margin-bottom', margin_top+"px");
     };
     
-    resize();
-    $( window ).resize( resize );
+    resizeWindow();
+    $( window ).resize( resizeWindow );
 
 });
 

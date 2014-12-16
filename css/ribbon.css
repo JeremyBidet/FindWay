@@ -30,7 +30,7 @@
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-name: activeRibbonForm;
-    -webkit-animation-duration: 0.1s;
+    -webkit-animation-duration: 0.3s;
     -webkit-animation-direction: normal;
     -webkit-animation-fill-mode: forwards;
     -webkit-perspective: 600px;
@@ -45,7 +45,7 @@
 }
 #ribbonFormTable tr td {
     border: 0px;
-    width: 50%;
+    width: 100%;
     border-spacing: 0px;
 }
 #ribbonForm input {
@@ -53,16 +53,13 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 20px;
-}
-#ribbonForm input.field {
-    float: right;
+    float: none;
 }
 #ribbonForm input.ribbonValidate {
     position: relative;
     border: 0px;
     background-color: #132033;
     color: #ffffff;
-    float: left;
     width: 150px;
     text-align: center;
     vertical-align: middle;
