@@ -90,24 +90,7 @@ $(document).ready(function ($) {
      * hide google map, show panel without form
      */
 	$('#logoProject').click(function() {
-		$('#mapCanvas').css('display', 'none');
-        deleteClass($('ribbonForm'), 'active');
-        $('#ribbonMenu').css('display', 'none');
-        $('#main').css('display', 'initial');
-        
-		$('.panel').removeClass('flip');
-		$(".mainMenu").removeClass('hide');
-		$(".mainMenu").addClass('show');
-		setTimeout(function() {
-			if($('#titleRoute').hasClass('move')) {
-				$('#titleRoute').removeClass('move');
-				$('#titleRoute').addClass('moveDown');
-			}
-			if($('#titlePlace').hasClass('move')) {
-				$('#titlePlace').removeClass('move');
-				$('#titlePlace').addClass('moveDown');
-			}
-		}, 400);
+        window.location.href = "index.html";
 	});
 
     /**
@@ -137,15 +120,15 @@ $(document).ready(function ($) {
             setTimeout( function() {
                 $('#ribbonPlace').css('display', 'inline');
                 $('#ribbonFindPlace').css('display', 'inline');
+                $('#ribbonPlace').focus();
+                resizeWindow();
             }, 300);
         } else {
             $('#ribbonPlace').css('display', 'inline');
             $('#ribbonFindPlace').css('display', 'inline');
+            $('#ribbonPlace').focus();
+            resizeWindow();
         }
-        
-        $('#ribbonPlace').focus();
-        
-        resizeWindow();
     });
     
     $('#routeRibbonMenu').click(function() {
@@ -167,16 +150,16 @@ $(document).ready(function ($) {
                 $('#ribbonStart').css('display', 'inline');
                 $('#ribbonEnd').css('display', 'inline');
                 $('#ribbonFindRoute').css('display', 'inline');
+                $('#ribbonStart').focus();
+                resizeWindow();
             }, 300);
         } else {
             $('#ribbonStart').css('display', 'inline');
             $('#ribbonEnd').css('display', 'inline');
             $('#ribbonFindRoute').css('display', 'inline');
+            $('#ribbonStart').focus();
+            resizeWindow();
         }
-        
-        $('#ribbonStart').focus();
-        
-        resizeWindow();
     });
     
     $('#address').keypress( function (e) {
