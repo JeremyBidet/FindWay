@@ -119,20 +119,29 @@ $(document).ready(function ($) {
     });
     
     $('#placeRibbonMenu').click(function() {
+        var tmp = ( $('#ribbonForm').hasClass('active') ? false : true );
+        
         deleteClass($('#routeRibbonMenu'), 'active');
         deleteClass($('#routeLink'), 'active');
         deleteClass($('#ribbonForm'), 'active');
         
-        activeClass($('#placeRibbonMenu'), 'active');
-        activeClass($('#placeLink'), 'active');
-        $('#ribbonPlace').css('display', 'inline');
-        activeClass($('#ribbonForm'), 'active');
-        
-        $('#ribbonFindPlace').css('display', 'inline');
-        
         $('#ribbonStart').css('display', 'none');
         $('#ribbonEnd').css('display', 'none');
         $('#ribbonFindRoute').css('display', 'none');
+        
+        activeClass($('#placeRibbonMenu'), 'active');
+        activeClass($('#placeLink'), 'active');
+        activeClass($('#ribbonForm'), 'active');
+        
+        if( tmp ) {
+            setTimeout( function() {
+                $('#ribbonPlace').css('display', 'inline');
+                $('#ribbonFindPlace').css('display', 'inline');
+            }, 300);
+        } else {
+            $('#ribbonPlace').css('display', 'inline');
+            $('#ribbonFindPlace').css('display', 'inline');
+        }
         
         $('#ribbonPlace').focus();
         
@@ -140,20 +149,30 @@ $(document).ready(function ($) {
     });
     
     $('#routeRibbonMenu').click(function() {
+        var tmp = ( $('#ribbonForm').hasClass('active') ? false : true );
+    
         deleteClass($('#placeRibbonMenu'), 'active');
         deleteClass($('#placeLink'), 'active');
         deleteClass($('#ribbonForm'), 'active');
         
+        $('#ribbonFindPlace').css('display', 'none');
+        $('#ribbonPlace').css('display', 'none');
+        
         activeClass($('#routeRibbonMenu'), 'active');
         activeClass($('#routeLink'), 'active');
-        $('#ribbonPlace').css('display', 'none');
         activeClass($('#ribbonForm'), 'active');
         
-        $('#ribbonFindPlace').css('display', 'none');
-        
-        $('#ribbonStart').css('display', 'inline');
-        $('#ribbonEnd').css('display', 'inline');
-        $('#ribbonFindRoute').css('display', 'inline');
+        if( tmp ) {
+            setTimeout( function() {
+                $('#ribbonStart').css('display', 'inline');
+                $('#ribbonEnd').css('display', 'inline');
+                $('#ribbonFindRoute').css('display', 'inline');
+            }, 300);
+        } else {
+            $('#ribbonStart').css('display', 'inline');
+            $('#ribbonEnd').css('display', 'inline');
+            $('#ribbonFindRoute').css('display', 'inline');
+        }
         
         $('#ribbonStart').focus();
         

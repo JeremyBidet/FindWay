@@ -22,11 +22,12 @@
     padding: 0px;
     text-align: center;
     vertical-align: middle;
-    background-color: white;
+    background-color: transparent;
     border-radius: 2px;
     border-spacing: 0px;
 }
 #ribbonForm.active {
+    background-color: white;
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-name: activeRibbonForm;
