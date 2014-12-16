@@ -1,0 +1,101 @@
+/**************/
+/*** RIBBON ***/
+/*************/
+#ribbonForm {
+    z-index: 100000;
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 100%;
+    min-width: 960px;
+    height: 0px;
+    border: 0px transparent;
+    background-color: transparent;
+}
+#ribbonFormTable,
+#ribbonFormTable tbody {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    border-radius: 2px;
+    border-spacing: 0px;
+}
+#ribbonForm.active {
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-name: activeRibbonForm;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    perspective: 600px;
+}
+#ribbonFormTable tr {
+    border: 0px;
+    height: 100%;
+    width: 100%;
+    border-spacing: 0px;
+}
+#ribbonFormTable tr td {
+    border: 0px;
+    width: 50%;
+    border-spacing: 0px;
+}
+#ribbonForm input {
+    display: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+#ribbonForm input.field {
+    float: right;
+}
+#ribbonForm input.ribbonValidate {
+    position: relative;
+    border: 0px;
+    background-color: #132033;
+    color: #ffffff;
+    float: left;
+    width: 150px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 37px;
+    height: 37px;
+    font-family: "SourceSansPro";
+    font-size: 16px;
+}
+#ribbonForm input.ribbonValidate:focus {
+    background-color: #23ccce;
+}
+#ribbonForm input.ribbonValidate:hover {
+    background-color: #ffffff;
+    color: #132033;
+    -webkit-transition: all .15s linear;
+    transition: all .15s linear;
+    border: 1px solid #132033;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+/*****************/
+/*** ANIMATION ***/
+/****************/
+@-webkit-keyframes activeRibbonForm {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 54px;
+    }
+}
+

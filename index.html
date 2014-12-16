@@ -13,9 +13,10 @@
     <meta name="robots" content="index, follow" />
 
 
+    <link rel="stylesheet" type="text/css" href="css/header.css" />
+    <link rel="stylesheet" type="text/css" href="css/ribbon.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/map.css" />
-    <link rel="stylesheet" type="text/css" href="css/header.css" />
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=places"></script>
@@ -27,55 +28,67 @@
 
 <body>
 
-<!-- HEADER RUBAN -->
-<div id="header">
-    <!-- Project link/logo on left -->
-    <div id="project">
-        <a href="index.html">
-            <img id="logoProject" src="img/FindWayLogo.png" alt="FindWay" />
-        </a>
+    <!-- HEADER RUBAN -->
+    <div id="header">
+        <!-- Project link/logo on left -->
+        <div id="project">
+            <a href="index.html">
+                <img id="logoProject" src="img/FindWayLogo.png" alt="FindWay" />
+            </a>
+        </div>
+        
+        <!-- Ribbon Menu -->
+        <div id="ribbonMenu">
+            <table id="ribbonMenuTable">
+                <tr id="ribbonMenuTr">
+                    <!-- home ribbon menu -->
+                    <td id="homeRibbonMenu" >
+                        <img id="logoHomeRibbonMenu" src="img/home.png" alt="Accueil" />
+                    </td>
+                    <td class="none"></td>
+                    <!-- place ribbon menu -->
+                    <td id="placeRibbonMenu">
+                        <img id="logoPlaceRibbonMenu" src="img/place.min.png" alt="Lieu" />
+                    </td>
+                    <td class="none"></td>
+                    <!-- route ribbon menu -->
+                    <td id="routeRibbonMenu">
+                        <img id="logoRouteRibbonMenu" src="img/route.min.png" alt="Itinéraire" />
+                    </td>
+                </tr>
+                <tr id="underRibbonMenuTr">
+                    <td id="homeLink" class="link"></td>
+                    <td class="none"></td>
+                    <td id="placeLink" class="link"></td>
+                    <td class="none"></td>
+                    <td id="routeLink" class="link"></td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Firm link/logo on right -->
+        <div id="firm">
+            <a href="http://82.241.84.75:420/">
+                <img id="logoFirm" src="img/PathfinderLogo.png" alt="PathFinder" />
+            </a>
+        </div>
     </div>
     
-    <!-- Ribbon Menu -->
-    <div id="ribbonMenu">
-        <table id="ribbonMenuTable">
-            <tr id="ribbonMenuTr">
-                <!-- home ribbon menu -->
-                <td id="homeRibbonMenu" >
-                    <img id="logoHomeRibbonMenu" src="img/home.png" alt="Accueil" />
-                </td>
-                <td class="none"></td>
-                <!-- place ribbon menu -->
-                <td id="placeRibbonMenu">
-                    <img id="logoPlaceRibbonMenu" src="img/place.min.png" alt="Lieu" />
-                </td>
-                <td class="none"></td>
-                <!-- route ribbon menu -->
-                <td id="routeRibbonMenu">
-                    <img id="logoRouteRibbonMenu" src="img/route.min.png" alt="Itinéraire" />
-                </td>
-            </tr>
-            <tr id="underRibbonMenuTr">
-                <td id="homeLink" class="link"></td>
-                <td class="none"></td>
-                <td id="placeLink" class="link"></td>
-                <td class="none"></td>
-                <td id="routeLink" class="link"></td>
-            </tr>
-        </table>
-    </div>
-    
-    <!-- Firm link/logo on right -->
-    <div id="firm">
-        <a href="http://82.241.84.75:420/">
-            <img id="logoFirm" src="img/PathfinderLogo.png" alt="PathFinder" />
-        </a>
-    </div>
-</div>
-
-
-<!-- RIBBON FORM -->
-<div id="ribbonForm" width="100%" height="0px;">
+    <!-- RIBBON FORM -->
+<div id="ribbonForm">
+    <table id="ribbonFormTable">
+        <tr>
+            <td>
+                <input type="text" id="ribbonPlace" placeholder="Ville" class="field"  />
+                <input type="text" id="ribbonEnd" placeholder="Arrivée" class="field" />
+                <input type="text" id="ribbonStart" placeholder="Départ" class="field" />
+            </td>
+            <td>
+                <input type="button" id="ribbonFindPlace" class="ribbonValidate" value="Rechercher" onclick="codeAddress('ribbonPlace')" />
+                <input type="button" id="ribbonFindRoute" class="ribbonValidate" value="Rechercher" onclick="calcRoute('ribbonStart', 'ribbonEnd')" />
+            </td>
+        </tr>
+    </table>
 </div>
 
 
@@ -95,9 +108,9 @@
                 <!-- FORM -->
                 <div class="form">
                     <!-- INPUT PLACE -->
-                    <input type="text" id="address" placeholder="Ville" width="100%" class="field" />
+                    <input type="text" id="address" placeholder="Ville" class="field" />
                     <!-- SUBMIT -->
-                    <input type="button" id="findPlace" class="validate" value="Rechercher" onclick="codeAddress()" />
+                    <input type="button" id="findPlace" class="validate" value="Rechercher" onclick="codeAddress('address')" />
                 </div>
             </div>
         </div>
@@ -113,11 +126,11 @@
                 <!-- FORM -->
                 <div class="form">
                     <!-- INPUT ROUTE START -->
-                    <input type="text" id="start" placeholder="Départ" width="100%" class="field" />
+                    <input type="text" id="start" placeholder="Départ" class="field" />
                     <!-- INPUT ROUTE END -->
-                    <input type="text" id="end" placeholder="Arrivée" width="100%" class="field" />
+                    <input type="text" id="end" placeholder="Arrivée" class="field" />
                     <!-- SUBMIT -->
-                    <input type="button" id="findRoute" class="validate" value="Rechercher" onclick="calcRoute()" />
+                    <input type="button" id="findRoute" class="validate" value="Rechercher" onclick="calcRoute('start', 'end')" />
                 </div>
             </div>
         </div>        

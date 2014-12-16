@@ -1,10 +1,6 @@
-// JavaScript Document
 $(document).ready(function ($) {
-	
-    
     /**
-     * click on menu ribbon button :
-     * home, place, route
+     * functions
      */
     function activeClass(node, className) {
         if( node.hasClass(className) ) {
@@ -18,32 +14,7 @@ $(document).ready(function ($) {
             node.removeClass(className);
         }
     }
-    $('#homeRibbonMenu').click(function() {
-        deleteClass($('#placeRibbonMenu'), 'active');
-        deleteClass($('#placeLink'), 'active');
-        deleteClass($('#routeRibbonMenu'), 'active');
-        deleteClass($('#routeLink'), 'active');
-        activeClass($('#homeRibbonMenu'), 'active');
-        activeClass($('#homeLink'), 'active');
-    });
-    $('#placeRibbonMenu').click(function() {
-        deleteClass($('#homeRibbonMenu'), 'active');
-        deleteClass($('#homeLink'), 'active');
-        deleteClass($('#routeRibbonMenu'), 'active');
-        deleteClass($('#routeLink'), 'active');
-        activeClass($('#placeRibbonMenu'), 'active');
-        activeClass($('#placeLink'), 'active');
-    });
-    $('#routeRibbonMenu').click(function() {
-        deleteClass($('#placeRibbonMenu'), 'active');
-        deleteClass($('#placeLink'), 'active');
-        deleteClass($('#homeRibbonMenu'), 'active');
-        deleteClass($('#homeLink'), 'active');
-        activeClass($('#routeRibbonMenu'), 'active');
-        activeClass($('#routeLink'), 'active');
-    });
     
-
     /**
      * click on place panel
      * close route panel form and open place panel form
@@ -97,6 +68,7 @@ $(document).ready(function ($) {
 		$('#titlePlace').removeClass('move');
 		$('#mapCanvas').css('display', 'initial'),
         $('#main').css('display', 'none');
+        $('#ribbonMenu').css('display', 'block');
         e.preventDefault();
 	});
     
@@ -109,17 +81,20 @@ $(document).ready(function ($) {
 		$('#titleRoute').removeClass('move');
 		$('#mapCanvas').css('display', 'initial'),
         $('#main').css('display', 'none');
+        $('#ribbonMenu').css('display', 'block');
 		e.preventDefault();
-
-		google.maps.event.addDomListener(window, 'load', initialize);
 	});
-
 
     /**
      * click on project logo
      * hide google map, show panel without form
      */
 	$('#logoProject').click(function() {
+		$('#mapCanvas').css('display', 'none');
+        deleteClass($('ribbonForm'), 'active');
+        $('#ribbonMenu').css('display', 'none');
+        $('#main').css('display', 'initial');
+        
 		$('.panel').removeClass('flip');
 		$(".mainMenu").removeClass('hide');
 		$(".mainMenu").addClass('show');
@@ -133,10 +108,118 @@ $(document).ready(function ($) {
 				$('#titlePlace').addClass('moveDown');
 			}
 		}, 400);
-		$('#mapCanvas').css('display', 'none'),
-        $('#main').css('display', 'initial');
 	});
 
+    /**
+     * click on menu ribbon button :
+     * home, place, route
+     */
+    $('#homeRibbonMenu').click(function() {
+        window.location.href = "index.html";
+    });
+    
+    $('#placeRibbonMenu').click(function() {
+        deleteClass($('#routeRibbonMenu'), 'active');
+        deleteClass($('#routeLink'), 'active');
+        deleteClass($('#ribbonForm'), 'active');
+        
+        activeClass($('#placeRibbonMenu'), 'active');
+        activeClass($('#placeLink'), 'active');
+        activeClass($('#ribbonForm'), 'active');
+        
+        $('#ribbonPlace').css('display', 'inline');
+        $('#ribbonFindPlace').css('display', 'inline');
+        
+        $('#ribbonStart').css('display', 'none');
+        $('#ribbonEnd').css('display', 'none');
+        $('#ribbonFindRoute').css('display', 'none');
+        
+        $('#ribbonPlace').focus();
+        
+        resize();
+    });
+    
+    $('#routeRibbonMenu').click(function() {
+        deleteClass($('#placeRibbonMenu'), 'active');
+        deleteClass($('#placeLink'), 'active');
+        deleteClass($('#ribbonForm'), 'active');
+        
+        activeClass($('#routeRibbonMenu'), 'active');
+        activeClass($('#routeLink'), 'active');
+        activeClass($('#ribbonForm'), 'active');
+        
+        $('#ribbonPlace').css('display', 'none');
+        $('#ribbonFindPlace').css('display', 'none');
+        
+        $('#ribbonStart').css('display', 'inline');
+        $('#ribbonEnd').css('display', 'inline');
+        $('#ribbonFindRoute').css('display', 'inline');
+        
+        $('#ribbonStart').focus();
+        
+        resize();
+    });
+    
+    $('#address').keypress( function (e) {
+        if( e.which == 13 ) {
+            if( $('#address').val().trim() ) {
+                codeAddress('address');
+                $('.panel').removeClass('flip');
+                $('#titlePlace').removeClass('move');
+                $('#mapCanvas').css('display', 'initial'),
+                $('#main').css('display', 'none');
+                $('#ribbonMenu').css('display', 'block');
+                e.preventDefault();
+            }
+        }
+    });
+    $('#ribbonPlace').keypress( function (e) {
+        if( e.which == 13 ) {
+            if( $('#ribbonPlace').val().trim() ) {
+                codeAddress('ribbonPlace');
+                $('.panel').removeClass('flip');
+                $('#titlePlace').removeClass('move');
+                $('#mapCanvas').css('display', 'initial'),
+                $('#main').css('display', 'none');
+                $('#ribbonMenu').css('display', 'block');
+                e.preventDefault();
+            }
+        }
+    });
+
+    function check(e) {
+        if( e.which == 13 ) {
+            if( $('#start').val().trim() && $('#end').val().trim() ) {
+                calcRoute('start', 'end');
+                $('.panel').removeClass('flip');
+                $('#titleRoute').removeClass('move');
+                $('#mapCanvas').css('display', 'initial'),
+                $('#main').css('display', 'none');
+                $('#ribbonMenu').css('display', 'block');
+                e.preventDefault();
+            }
+        }
+    }
+    $('#end').keypress( check );
+    $('#start').keypress( check );
+    
+    function checkRibbon(e) {
+        if( e.which == 13 ) {
+            if( $('#ribbonStart').val().trim() && $('#ribbonEnd').val().trim() ) {
+                calcRoute('ribbonStart', 'ribbonEnd');
+                $('.panel').removeClass('flip');
+                $('#titleRoute').removeClass('move');
+                $('#mapCanvas').css('display', 'initial'),
+                $('#main').css('display', 'none');
+                $('#ribbonMenu').css('display', 'block');
+                e.preventDefault();
+            }
+        }
+    };
+    $('#ribbonEnd').keypress( checkRibbon );
+    $('#ribbonStart').keypress( checkRibbon );
+    
+    
     
     var resize = function() {
         var main = $('#main');
@@ -149,6 +232,9 @@ $(document).ready(function ($) {
         main.height(Math.max(hheight-hmax, parseInt(main.css('min-height'))));
         
         mapCanvas.height(Math.max(hheight-hmax, parseInt(mapCanvas.css('min-height'))));
+        if( $('#ribbonForm').hasClass('active') ) {
+            hmax += 55;
+        }
         mapCanvas.css( "top", hmax+"px" );
         
         var margin_top = (main.height() - block.width()) / 2;
@@ -160,6 +246,4 @@ $(document).ready(function ($) {
     $( window ).resize( resize );
 
 });
-
-
 
