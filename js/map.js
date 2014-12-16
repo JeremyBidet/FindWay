@@ -95,6 +95,7 @@ function calcRoute(_start, _end) {
     for (var i = 0; i < markerArray.length; i++) {
         markerArray[i].setMap(null);
     }
+    directionsDisplay.setMap(null);
     markerArray = [];
     var start = document.getElementById(_start).value;
     var end = document.getElementById(_end).value;
@@ -105,6 +106,7 @@ function calcRoute(_start, _end) {
     };
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setMap(map);
             directionsDisplay.setDirections(response);
             showSteps(response);
         }
