@@ -98,7 +98,7 @@ $(document).ready(function ($) {
         $('#mapCanvas').css('top', tmp+'px');
         $('#mapCanvas').animate(
             {
-                top: tmp+55
+                top: tmp+53
             }
         );
     }
