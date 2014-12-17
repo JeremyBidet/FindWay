@@ -93,6 +93,16 @@ $(document).ready(function ($) {
         window.location.href = "index.html";
 	});
 
+    function mapDown() {
+        var tmp = Math.max($("html").height()*8/100, 100);
+        $('#mapCanvas').css('top', tmp+'px');
+        $('#mapCanvas').animate(
+            {
+                top: tmp+55
+            }
+        );
+    }
+    
     /**
      * click on menu ribbon button :
      * home, place, route
@@ -117,6 +127,7 @@ $(document).ready(function ($) {
         activeClass($('#ribbonForm'), 'active');
         
         if( tmp ) {
+            mapDown();
             setTimeout( function() {
                 $('#ribbonPlace').css('display', 'inline');
                 $('#ribbonFindPlace').css('display', 'inline');
@@ -146,6 +157,7 @@ $(document).ready(function ($) {
         activeClass($('#ribbonForm'), 'active');
         
         if( tmp ) {
+            mapDown();
             setTimeout( function() {
                 $('#ribbonStart').css('display', 'inline');
                 $('#ribbonEnd').css('display', 'inline');
