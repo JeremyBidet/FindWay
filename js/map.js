@@ -70,18 +70,7 @@ function codeAddress(place) {
             marker.setPosition(results[0].geometry.location);
             marker.setVisible(true);
         } else {
-            geocoder.geocode( { 'address':'error' }, function(results, status) {
-                map.setCenter(results[0].geometry.location);
-                marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-                marker.setPosition(results[0].geometry.location);
-                marker.setVisible(true);
-            });
-            var s = "<div><strong>Bienvenida a Error !</strong></div><br>Perù";
-            infowindow.setContent(s);
-            infowindow.open(map, marker);
+            alert("Lieu introuvable :\nvérifier votre adresse de recherche !");
         }
     });
 }
@@ -109,6 +98,8 @@ function calcRoute(_start, _end) {
             directionsDisplay.setMap(map);
             directionsDisplay.setDirections(response);
             showSteps(response);
+        } else {
+            alert("Itinéraire introuvable :\nvérifier vos adresse de départ et de destination !");
         }
     });
 }
